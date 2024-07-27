@@ -4,7 +4,7 @@ import netifaces
 from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from typing import Dict
-from dotenv import load_dotenv
+
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
@@ -75,5 +75,4 @@ async def translate_text(request: TranslationRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    PORT = int(os.getenv("PORT", "8000"))
-    uvicorn.run(app, host="0.0.0.0", port=PORT)
+    uvicorn.run(app, host="0.0.0.0", port=8815)
