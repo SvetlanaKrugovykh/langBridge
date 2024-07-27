@@ -50,6 +50,7 @@ def get_local_ips():
                 local_ips.add(addr_info['addr'])
     return local_ips
 
+# Cache local IPs
 local_ips = get_local_ips()
 print(f"Local IPs: {local_ips}")
 
@@ -74,5 +75,12 @@ async def translate_text(request: TranslationRequest):
     return {"translated_text": translated_text}
 
 if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8815)
+    import hypercorn.asyncio
+    import asyncio
+
+    async def main():
+        config = hypercorn.Config()
+        config.bind = ["0.0.0.0:8815"]
+        await hypercorn.asyncio.serve(app, config)
+
+    asyncio.run(main())
