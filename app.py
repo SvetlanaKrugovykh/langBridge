@@ -28,8 +28,8 @@ class TranslationRequest(BaseModel):
 
 # Mapping of directions to translation functions
 TRANSLATION_MAP: Dict[str, callable] = {
-    "en_ru": translate_en_es,
-    "en_ru": translate_en_fr,
+    "en_es": translate_en_es,
+    "en_fr": translate_en_fr,
     "en_ru": translate_en_ru,
     "en_uk": translate_en_uk,
     "en_de": translate_en_de,
